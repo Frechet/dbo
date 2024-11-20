@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "4189cee0-6f2b-4145-9ef7-46338fa7e7d2",
+		"name": "task_dbo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "2810418"
+	},
+	"item": [
+		{
+			"name": "get client by phone",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTY3OTkwODM4NiwiaWF0IjoxNjc5ODcyMzg2fQ.Zu8nNCq7p8YIjb9qi4hmb-ILGemrA3pPzC_fXQZVHDs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/client/getbyphone/:phone",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"getbyphone",
+						":phone"
+					],
+					"variable": [
+						{
+							"key": "phone",
+							"value": "79207865434"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get client by birthdate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTY3OTkwODM4NiwiaWF0IjoxNjc5ODcyMzg2fQ.Zu8nNCq7p8YIjb9qi4hmb-ILGemrA3pPzC_fXQZVHDs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/client/getbybirthdate?birthdate=02.02.2000&page=0&size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"getbybirthdate"
+					],
+					"query": [
+						{
+							"key": "birthdate",
+							"value": "02.02.2000"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get client by name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHlhaG9vLmNvbSIsImV4cCI6MTY3OTgyMTA0MSwiaWF0IjoxNjc5Nzg1MDQxfQ.tD7Br-4Q812TM1sTO-CVXA1b7aW2ZpbiMfQFkR3wEIo",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/client/getbyname?name=Andy&page=0&size=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"getbyname"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Andy"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get client by mail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTY3OTkwODM4NiwiaWF0IjoxNjc5ODcyMzg2fQ.Zu8nNCq7p8YIjb9qi4hmb-ILGemrA3pPzC_fXQZVHDs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/client/getbymail/:mail",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"getbymail",
+						":mail"
+					],
+					"variable": [
+						{
+							"key": "mail",
+							"value": "test@yahoo.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "money transfer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/client/moneytransfer?sourceId=11&recipientId=12&amount=403.96",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"moneytransfer"
+					],
+					"query": [
+						{
+							"key": "sourceId",
+							"value": "11"
+						},
+						{
+							"key": "recipientId",
+							"value": "12"
+						},
+						{
+							"key": "amount",
+							"value": "403.96"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"mail\": \"test@gmail.com\",\n\t\"password\": \"passTimofeyev\"\n}"
+				},
+				"url": "localhost:8080/authenticate"
+			},
+			"response": []
+		}
+	]
+}

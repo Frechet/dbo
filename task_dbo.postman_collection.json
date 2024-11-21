@@ -13,7 +13,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTY3OTkwODM4NiwiaWF0IjoxNjc5ODcyMzg2fQ.Zu8nNCq7p8YIjb9qi4hmb-ILGemrA3pPzC_fXQZVHDs",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsIlVTRVJfSUQiOjMsImV4cCI6MTczMjE0NTY1NSwiaWF0IjoxNzMyMTA5NjU1fQ.evMK3sGy4hZZGI_MZgFDQtY5TauvodEn8ev-4SRt7e0",
 						"type": "text"
 					}
 				],
@@ -46,7 +46,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTY3OTkwODM4NiwiaWF0IjoxNjc5ODcyMzg2fQ.Zu8nNCq7p8YIjb9qi4hmb-ILGemrA3pPzC_fXQZVHDs",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsIlVTRVJfSUQiOjMsImV4cCI6MTczMjE0NTY1NSwiaWF0IjoxNzMyMTA5NjU1fQ.evMK3sGy4hZZGI_MZgFDQtY5TauvodEn8ev-4SRt7e0",
 						"type": "text"
 					}
 				],
@@ -86,13 +86,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHlhaG9vLmNvbSIsImV4cCI6MTY3OTgyMTA0MSwiaWF0IjoxNjc5Nzg1MDQxfQ.tD7Br-4Q812TM1sTO-CVXA1b7aW2ZpbiMfQFkR3wEIo",
-						"type": "text",
-						"disabled": true
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsIlVTRVJfSUQiOjMsImV4cCI6MTczMjE0NTY1NSwiaWF0IjoxNzMyMTA5NjU1fQ.evMK3sGy4hZZGI_MZgFDQtY5TauvodEn8ev-4SRt7e0",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "localhost:8080/api/client/getbyname?name=Andy&page=0&size=1",
+					"raw": "localhost:8080/api/client/getbyname?name=P&page=0&size=1",
 					"host": [
 						"localhost"
 					],
@@ -105,7 +104,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Andy"
+							"value": "P"
 						},
 						{
 							"key": "page",
@@ -127,7 +126,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTY3OTkwODM4NiwiaWF0IjoxNjc5ODcyMzg2fQ.Zu8nNCq7p8YIjb9qi4hmb-ILGemrA3pPzC_fXQZVHDs",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsIlVTRVJfSUQiOjMsImV4cCI6MTczMjE0MDU3NiwiaWF0IjoxNzMyMTA0NTc2fQ.M_cWPBk12cM_1WI67p6CordGbg7aY_oq2Sss6VIPlTQ",
 						"type": "text"
 					}
 				],
@@ -157,13 +156,19 @@
 			"name": "money transfer",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsIlVTRVJfSUQiOjMsImV4cCI6MTczMjE1NTU3OSwiaWF0IjoxNzMyMTE5NTc5fQ.R3kXLi1dGLpZNgrkaXEzRMR1VlLDC4Z7iIoquIVfJvQ",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:8080/api/client/moneytransfer?sourceId=11&recipientId=12&amount=403.96",
+					"raw": "localhost:8080/api/client/transfermoney?transferTo=2&value=1.96",
 					"host": [
 						"localhost"
 					],
@@ -171,20 +176,16 @@
 					"path": [
 						"api",
 						"client",
-						"moneytransfer"
+						"transfermoney"
 					],
 					"query": [
 						{
-							"key": "sourceId",
-							"value": "11"
+							"key": "transferTo",
+							"value": "2"
 						},
 						{
-							"key": "recipientId",
-							"value": "12"
-						},
-						{
-							"key": "amount",
-							"value": "403.96"
+							"key": "value",
+							"value": "1.96"
 						}
 					]
 				}
@@ -207,6 +208,80 @@
 					"raw": "{\n\t\"mail\": \"test@gmail.com\",\n\t\"password\": \"passTimofeyev\"\n}"
 				},
 				"url": "localhost:8080/authenticate"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "delete phone",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsIlVTRVJfSUQiOjMsImV4cCI6MTczMjIxMTUxMCwiaWF0IjoxNzMyMTc1NTEwfQ.qp8ctAu-s7HxFVEWk3WYivYwCQVNRVk9kYUGpfRK8_g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/client/phone/:phone",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"phone",
+						":phone"
+					],
+					"variable": [
+						{
+							"key": "phone",
+							"value": "79207865466"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put phone",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsIlVTRVJfSUQiOjMsImV4cCI6MTczMjIxMTUxMCwiaWF0IjoxNzMyMTc1NTEwfQ.qp8ctAu-s7HxFVEWk3WYivYwCQVNRVk9kYUGpfRK8_g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/client/phone/:phone",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"client",
+						"phone",
+						":phone"
+					],
+					"variable": [
+						{
+							"key": "phone",
+							"value": "79207865466"
+						}
+					]
+				}
 			},
 			"response": []
 		}

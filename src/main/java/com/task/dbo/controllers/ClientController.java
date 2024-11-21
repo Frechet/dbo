@@ -1,12 +1,14 @@
 package com.task.dbo.controllers;
 
 import com.task.dbo.dto.ClientDto;
+import com.task.dbo.dto.PhoneDto;
 import com.task.dbo.service.AccountService;
 import com.task.dbo.service.ClientService;
 import com.task.dbo.utils.JwtUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import javax.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,8 +32,31 @@ public class ClientController {
   @GetMapping("/getbyphone/{phone}")
   @Operation(summary = "Поиск по телефону")
   @SecurityRequirement(name = "JWT")
-  public ResponseEntity<ClientDto> getClientByPhone(@PathVariable String phone) {
+  public ResponseEntity<ClientDto> getClientByPhone(
+      @PathVariable
+      @Pattern(regexp = "7\\d{10}", message = "номер телефона не соответствует ожидаемому формату")
+      String phone) {
     return ResponseEntity.ok().body(clientService.getClientByPhone(phone));
+  }
+
+  @PutMapping("/phone/{phone}")
+  @Operation(summary = "Добавить телефон текущему клиенту")
+  @SecurityRequirement(name = "JWT")
+  public ResponseEntity<PhoneDto> putClientPhone(
+      @PathVariable
+      @Pattern(regexp = "7\\d{10}", message = "номер телефона не соответствует ожидаемому формату")
+      String phone) {
+    return ResponseEntity.ok().body(clientService.putClientPhone(jwtUtil.extractUserId(), phone));
+  }
+
+  @DeleteMapping("/phone/{phone}")
+  @Operation(summary = "Удалить телефон у текущего клиента, если он был")
+  @SecurityRequirement(name = "JWT")
+  public ResponseEntity<Boolean> deleteClientPhone(
+      @PathVariable
+      @Pattern(regexp = "7\\d{10}", message = "номер телефона не соответствует ожидаемому формату")
+      String phone) {
+    return ResponseEntity.ok().body(clientService.deleteClientPhone(jwtUtil.extractUserId(), phone));
   }
 
   @GetMapping("/getbyname")

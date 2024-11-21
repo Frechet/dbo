@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.Min;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,8 @@ import java.math.BigDecimal;
 public class Account {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @SequenceGenerator(name = "account_id_seq", sequenceName = "account_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="account_id_seq")
   private Long id;
 
   @Min(value = 0, message = "Баланс не может опуститься ниже 0")

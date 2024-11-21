@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +23,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Client implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @SequenceGenerator(name = "client_id_seq", sequenceName = "client_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="client_id_seq")
   private Long id;
 
   @Column(nullable = false)

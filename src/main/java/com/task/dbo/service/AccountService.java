@@ -19,8 +19,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Service
 @Slf4j
@@ -40,12 +38,12 @@ public class AccountService {
       BigDecimal newBalance = account.getBalance().multiply(coefficient);
       if (!(newBalance.compareTo(account.getBalanceInitial().multiply(balanceRaiseLimit)) > 0)) {
         account.setBalance(newBalance);
-        log.info("client ID - {}, current  balance - {},  changed at - {}", account.getClient().getId(),
-            account.getBalance().setScale(2, RoundingMode.HALF_UP), formatEventDate());
+        log.info("client ID - {}, current  balance - {}", account.getClient().getId(),
+            account.getBalance().setScale(2, RoundingMode.HALF_UP));
       } else {
-        log.info("client ID - {}  reached the limit, init balance - {}, current  balance - {}, at - {}", account.getClient().getId(),
+        log.info("client ID - {}  reached the limit, init balance - {}, current  balance - {}", account.getClient().getId(),
             account.getBalanceInitial().setScale(2, RoundingMode.HALF_UP),
-            account.getBalance().setScale(2, RoundingMode.HALF_UP), formatEventDate());
+            account.getBalance().setScale(2, RoundingMode.HALF_UP));
       }
   }
 
@@ -72,20 +70,16 @@ public class AccountService {
     }
 
     senderAccount.setBalance(senderAccount.getBalance().subtract(valueBigDecimal));
-    log.info("senderAccount ID - {}, send - {}, current  balance - {},  changed at - {}", senderAccount.getClient().getId(),
+    log.info("senderAccount ID - {}, send - {}, current  balance - {}", senderAccount.getClient().getId(),
         valueBigDecimal.setScale(2, RoundingMode.HALF_UP),
-        senderAccount.getBalance().setScale(2, RoundingMode.HALF_UP), formatEventDate());
+        senderAccount.getBalance().setScale(2, RoundingMode.HALF_UP));
 
     recipientAccount.setBalance(recipientAccount.getBalance().add(valueBigDecimal));
-    log.info("recipientAccount ID - {}, receive - {}, current  balance - {},  changed at - {}",
+    log.info("recipientAccount ID - {}, receive - {}, current  balance - {}",
         recipientAccount.getClient().getId(),
         valueBigDecimal.setScale(2, RoundingMode.HALF_UP),
-        recipientAccount.getBalance().setScale(2, RoundingMode.HALF_UP), formatEventDate());
+        recipientAccount.getBalance().setScale(2, RoundingMode.HALF_UP));
     return true;
   }
 
-  private String formatEventDate() {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyyy HH:mm:ss");
-    return formatter.format(LocalDateTime.now());
-  }
 }

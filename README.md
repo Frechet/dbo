@@ -1,68 +1,63 @@
-# ДБО (Тестовое задание, база ДБО по работе с балансом клиента)
+# DBO (Test Assignment: DBO Core for Client Balance Operations)
 
-[Тестовое задание на 6-8 часов](Task.pdf)
+[Test assignment estimated at 6-8 hours](Task.pdf)
 
-## Комментарии решению
+## Solution Notes
 
-### Что удалось
+### What Was Accomplished
 
-1) Учесть пессимистик Lock при изменении балансов
-2) Добавить USER_ID кастомный Claim в JWT
-3) Подключить тестконтейнеры и реализовать компонентные и юнит тесты
-4) Настроить удобные инструменты: lombok, mapstruct, flyway
-5) Настроить Swagger, да ещё с возможностью делать в нём запросы пройдя авторизацию и передавая JWT токен
-6) Добавить docker и docker-compose для сборки и запуска всего решения с инфраструктурой одной кнопкой
+1) Implemented pessimistic locking for balance updates.
+2) Added a custom USER_ID claim to the JWT.
+3) Integrated Testcontainers and implemented component and unit tests.
+4) Configured developer-friendly tools: Lombok, MapStruct, Flyway.
+5) Set up Swagger (OpenAPI) with authentication support for making authorized requests using a JWT token.
+6) Added Docker and Docker Compose files for one-command building and running the entire solution with its infrastructure.
 
-### Что улучшить не успел
+### What I Didn't Have Time to Improve
 
-1) C.UD операции и гибкий поиск. Успел реализовать CRUD для Phone только с R для клиента.
-2) Кеш в редисе, чтобы показать что могу, так как упоминался в задании. 
-Но надо исходить из проблематики сервиса, 
-если интересен гибкий оперативный поиск по базе клиента,
-то интереснее было бы решения на базе Elastic
-3) Уделить достаточно внимания валидациям
-4) Улучшить логирование. Добавлял по ходу собственной же отладке.
-5) Java доки + более развёрнутое описание API в Swagger
+1) C.UD Operations and Flexible Search: Only had time to implement full CRUD for the Phone entity and Read operations for the Client. Create, Update, Delete operations and advanced search for clients are missing.
+2) Redis Cache: I considered adding a Redis cache to demonstrate the ability, as it was mentioned in the assignment. However, based on the service's potential needs, if the focus is flexible, operational client search, a solution based on Elasticsearch would be more suitable.
+3) Comprehensive Validation: Would need to dedicate more time to input and business logic validation.
+4) Enhanced Logging: Added basic logging for debugging during development; it needs a more structured approach for production.
+5) JavaDocs & Detailed API Docs: The Swagger API descriptions and JavaDoc comments could be more comprehensive.
 
-### Чего не было в задании, но важно
+### Additional Important Items Not Explicitly Required
 
-1) Хранение паролей в зашифрованном виде
-2) Вместо таблицы USER использовал наименование CLIENT, 
-чтобы не пересекаться зарезервированным именем в POstgreSQL.
+1) Password Storage: Passwords are stored encrypted (hashed) for security.
+2) Table Naming: Used the table name CLIENT instead of USER to avoid conflicts with the reserved keyword in PostgreSQL.
 
-## Собрать
+## Build
 
-Установите
+Prerequisites
 
 1) Java 11
 2) Maven 3.8
 3) Docker
 
-Запустите команду
+Run the following command in the project root:
+```
+mvn clean package
+```
 
-`mvn clean package`
+## Run
 
-## Запустить
+### Via Docker Compose
 
-### Через Docker Compose
+Prerequisites: docker, docker-buildx, and docker-compose must be installed.
 
-Уставите Docker Compose
-
-`docker, docker-buildx, docker-compose`
-
-Запустите приложение с инфраструктурой
+To start the application and all its infrastructure (database, etc.), run:
 
 `docker-compose up -d`
 
-## Работа с сервисом
+## Using the Service
 
-Авторизация по почте. [Список пользователей](src/main/resources/db/migration/V2__init_data.sql).
+Authentication is done via email. [A list of pre-loaded users is available in the source code](src/main/resources/db/migration/V2__init_data.sql).
 
-### Swagger
+### Swagger (OpenAPI UI)
 
 http://localhost:8080/swagger-ui/index.html
 
 ### Postman
 
-[Postman коллекция](task_dbo.postman_collection.json)
+[A Postman collection is provided for testing the API.](task_dbo.postman_collection.json)
 
